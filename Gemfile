@@ -13,6 +13,8 @@ gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
 gem 'responders'
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
 
 group :development do
   gem 'better_errors'
