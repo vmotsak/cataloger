@@ -12,4 +12,7 @@
       = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
-      = yield
+      .container
+        .row
+          .col-xs-10.col-xs-offset-1
+            = yield

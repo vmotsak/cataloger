@@ -1,25 +1,28 @@
+= link_to new_product_path do
+  %button.btn.btn-default New Product
+
 %h1 Listing products
 
-%table
+%table.table.table-condensed
   %thead
     %tr
       %th Name
       %th Description
-      %th User
-      %th
-      %th
-      %th
+      %th Actions
 
   %tbody
     - @products.each do |product|
       %tr
         %td= product.name
         %td= product.description
-        %td= product.user
-        %td= link_to 'Show', product
-        %td= link_to 'Edit', edit_product_path(product)
-        %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td
+          = link_to product, { title: 'Show' } do
+            %button.btn.btn-default
+              %span.glyphicon.glyphicon-search
+          = link_to edit_product_path(product), { title: 'Edit' } do
+            %button.btn.btn-default
+              %span.glyphicon.glyphicon-edit
+          = link_to product, { method: :delete, title: 'Delete',data: { confirm: 'Are you sure?' } } do
+            %button.btn.btn-default
+              %span.glyphicon.glyphicon-time
 %br
-
-= link_to 'New Product', new_product_path
