@@ -1,7 +1,7 @@
 = link_to new_product_path do
   %button.btn.btn-default New Product
 
-%h1 Listing products
+%h1 My Products
 
 %table.table.table-condensed
   %thead
@@ -13,12 +13,9 @@
   %tbody
     - @products.each do |product|
       %tr
-        %td= product.name
+        %td= link_to product.name, product
         %td= product.description
         %td
-          = link_to product, { title: 'Show' } do
-            %button.btn.btn-default
-              %span.glyphicon.glyphicon-search
           = link_to edit_product_path(product), { title: 'Edit' } do
             %button.btn.btn-default
               %span.glyphicon.glyphicon-edit

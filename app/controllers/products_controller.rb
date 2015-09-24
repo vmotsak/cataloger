@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_with @products = Product.all
+    respond_with @products = current_user.products.all
   end
 
   def show
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    respond_with(@product = Product.create(product_params))
+    respond_with(@product = current_user.products.create(product_params))
   end
 
   def update
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
-    @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
