@@ -1,0 +1,12 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *connection
+  database: cataloger_development
+
+test: &test
+  <<: *connection
+  database: cataloger_test
