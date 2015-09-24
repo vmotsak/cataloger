@@ -19,10 +19,10 @@ gem 'pg'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_20]
+  gem 'binding_of_caller', platforms: [:mri_20]
   gem 'foreman'
   gem 'html2haml'
-  gem 'hub', :require=>nil
+  gem 'hub', require: nil
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
@@ -41,4 +41,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', require: false
 end
