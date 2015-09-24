@@ -12,6 +12,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
+gem 'responders'
 
 group :development do
   gem 'better_errors'

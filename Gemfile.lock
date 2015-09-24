@@ -276,6 +276,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails_12factor
   rails_layout
+  responders
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
