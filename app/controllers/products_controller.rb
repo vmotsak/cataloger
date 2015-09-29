@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :mark_as_pro]
 
   def index
-    respond_with @products = current_user.products.all
+    respond_with @products = Product.all
   end
 
   def show
@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
 
   def create
     respond_with(@product = current_user.products.create(product_params))
+  end
+
+  def mark_as_pro
+    @product.update(is_pro: true)
+    respond_with(@product)
   end
 
   def update

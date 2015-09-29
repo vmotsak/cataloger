@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     get "users/sign_up/admin", to: "registrations#admin"
     get "users/sign_up/owner", to: "registrations#owner"
   end
-  resources :products
+
+  resources :products do
+    post 'mark_as_pro', on: :member
+  end
 
   root 'products#index'
 end

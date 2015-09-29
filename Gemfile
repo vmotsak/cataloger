@@ -16,6 +16,7 @@ gem 'responders'
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
 gem "therubyracer"
+gem "pundit"
 
 group :development do
   gem 'better_errors'
