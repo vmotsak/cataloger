@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'registrations/admin'
-  get 'registrations/owner'
-  get 'registrations/visitor'
-
+  devise_for :users, controllers: { registrations: "registrations" }
+  devise_scope :user do
+    get "users/sign_up/admin", to: "registrations#admin"
+    get "users/sign_up/owner", to: "registrations#owner"
+  end
   resources :products
-  devise_for :users
+
   root 'products#index'
 end

@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'responders'
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
+gem "therubyracer"
 
 group :development do
   gem 'better_errors'
@@ -32,10 +33,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rubocop'
-  gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-
 end
 
 group :production do
