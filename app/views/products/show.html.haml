@@ -1,5 +1,9 @@
 %p#notice= notice
 
+- if policy(@product).show_shop_name?
+  %p
+    %b Shop Name:
+    = @product.shop_name
 %p
   %b Name:
   = @product.name
@@ -7,8 +11,7 @@
   %b Description:
   = @product.description
 %p
-  = image_tag attachment_url(@product, :photo, :fill, 300, 300, format: "jpg")
+  -if @product.photo_id
+    = image_tag attachment_url(@product, :photo, :fill, 300, 300, format: "jpg")
 
-= link_to 'Edit', edit_product_path(@product)
-\|
 = link_to 'Back', products_path

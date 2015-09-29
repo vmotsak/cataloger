@@ -1,5 +1,6 @@
-= link_to new_product_path do
-  %button.btn.btn-default New Product
+- if policy(Product).create?
+  = link_to new_product_path do
+    %button.btn.btn-default New Product
 
 %h1 My Products
 
@@ -8,18 +9,20 @@
     %tr
       %th Name
       %th Description
-      %th Actions
+      %th
 
   %tbody
     - @products.each do |product|
       %tr
-        %td= link_to product.name, product
+        %td
+          = link_to product do
+            -if product.is_pro?
+              %span.glyphicon.glyphicon-star
+            = product.name
         %td= product.description
         %td
-          = link_to edit_product_path(product), { title: 'Edit' } do
-            %button.btn.btn-default
-              %span.glyphicon.glyphicon-edit
-          = link_to product, { method: :delete, title: 'Delete',data: { confirm: 'Are you sure?' } } do
-            %button.btn.btn-default
-              %span.glyphicon.glyphicon-remove
+          - if policy(product).mark_as_pro?
+            = link_to mark_as_pro_product_path(product), { method: :post, title: 'Mark As Pro', data: { confirm: 'Are you sure?' } } do
+              %button.btn.btn-default
+                %span.glyphicon.glyphicon-star
 %br

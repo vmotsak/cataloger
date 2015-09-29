@@ -2,9 +2,11 @@
   = f.error_notification
 
   .form-inputs
+    = f.input :shop_name, disabled: true, hint: 'You cannot change your shop name.'
     = f.input :name
-    = f.input :description
-    = f.attachment_field :photo
+    = f.input :description, as: :text
+    .form-group
+      = f.attachment_field :photo
 
   .form-actions
     = f.button :submit
