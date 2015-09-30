@@ -25,4 +25,9 @@
             = link_to mark_as_pro_product_path(product), { method: :post, title: 'Mark As Pro', data: { confirm: 'Are you sure?' } } do
               %button.btn.btn-default
                 %span.glyphicon.glyphicon-star
+          - if policy(product).can_buy?
+            = link_to buy_product_path(product), { method: :post, title: 'Buy'} do
+              %button.btn.btn-default
+                %span.glyphicon.glyphicon-arrow-down
+
 %br

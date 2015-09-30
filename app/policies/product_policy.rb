@@ -18,6 +18,10 @@ class ProductPolicy <ApplicationPolicy
     user.nil? || !user.visitor?
   end
 
+  def can_buy?
+    user && user.visitor? && @record.sellable?
+  end
+
   class Scope
     attr_reader :user, :scope
 
@@ -27,8 +31,8 @@ class ProductPolicy <ApplicationPolicy
     end
 
     def resolve
-      if user && user.visitor?
-        scope.where(is_pro: true)
+      if user.nil?
+        scope.where(is_pro: [false, nil])
       else
         scope.all
       end

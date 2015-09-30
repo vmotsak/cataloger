@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :mark_as_pro]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :mark_as_pro,:buy]
 
   def index
     respond_with @products = policy_scope(Product)
@@ -24,8 +24,14 @@ class ProductsController < ApplicationController
   end
 
   def mark_as_pro
+    authorize @product
     @product.update(is_pro: true)
     respond_with(@product, location: products_path)
+  end
+
+  def buy
+    authorize @product
+
   end
 
   def update

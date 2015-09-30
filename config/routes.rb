@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :products do
     post 'mark_as_pro', on: :member
+    post 'buy', on: :member
   end
 
   root 'products#index'
