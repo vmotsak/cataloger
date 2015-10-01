@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
 
+  scope :admins, -> { where(role: 'admin') }
+
   def admin?
     role == 'admin'
   end
