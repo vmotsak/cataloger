@@ -18,7 +18,7 @@ class ProductPolicy <ApplicationPolicy
     user.nil? || !user.visitor?
   end
 
-  def can_buy?
+  def buy?
     user && user.visitor? && @record.sellable?
   end
 

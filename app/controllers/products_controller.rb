@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :mark_as_pro,:buy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :mark_as_pro, :buy]
 
   def index
     respond_with @products = policy_scope(Product)
@@ -31,7 +31,14 @@ class ProductsController < ApplicationController
 
   def buy
     authorize @product
-
+    purchase_service = PurchaseService.new(current_user)
+    purchase_service.buy @product
+    if purchase_service.error
+      flash[:error] = purchase_service.error
+    else
+      flash[:notice] = 'Product purchased'
+    end
+    redirect_to products_path
   end
 
   def update

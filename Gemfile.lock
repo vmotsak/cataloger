@@ -311,6 +311,7 @@ DEPENDENCIES
   refile
   refile-mini_magick
   responders
+  rest-client
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
