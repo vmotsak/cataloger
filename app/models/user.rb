@@ -5,33 +5,24 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   has_many :products
-  attachment :avatar
-  attachment :passport_photo
 
   validates_format_of :email, :with => /@/
   validates_presence_of :name
-  validates_presence_of :avatar, :passport_photo, :last_name, if: 'admin?'
-  validates_presence_of :shop_name, if: 'owner?'
 
   validates_length_of :password, within: 6..128, allow_blank: true, if: 'visitor?'
-  validates_length_of :password, within: 8..128, allow_blank: true, if: 'owner?'
-  validates_length_of :password, within: 10..128, allow_blank: true, if: 'admin?'
-
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
 
-  scope :admins, -> { where(role: 'admin') }
-
   def admin?
-    role == 'admin'
+    false
   end
 
   def owner?
-    role == 'owner'
+    false
   end
 
   def visitor?
-    role.nil? || role=='visitor'
+    true
   end
 
   def password_required?

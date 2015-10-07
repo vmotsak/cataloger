@@ -1,11 +1,16 @@
 .authform
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    %h3 Visitor sign up
+    %h3 Admin sign up
     = devise_error_messages!
     .form-inputs
       =f.input :name, autofocus: true
+      =f.input :last_name
       =f.input :email
       =f.input :password
       =f.input :password_confirmation
+      .form-group
+        =f.attachment_field :avatar
+      .form-group
+        =f.attachment_field :passport_photo
     .form-actions
-      = f.button :submit, 'Sign Up'
+      = f.button :submit, 'Sing Up'

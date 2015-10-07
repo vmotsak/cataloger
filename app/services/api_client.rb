@@ -7,8 +7,8 @@ class APIClient
   end
 
   def self.retrieve_todo_id
-    json = execute("http://jsonplaceholder.typicode.com/todos", method: :post, max_retries: 3)
-    json['id']
+    todo = execute("http://jsonplaceholder.typicode.com/todos", method: :post, max_retries: 3)
+    todo['id']
   end
 
   def self.execute(url, method: :get, payload: {}, max_retries: 1, timeout: 3)

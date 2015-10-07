@@ -7,7 +7,6 @@ describe APIClient do
     }
 
     it 'fails if retry limit reached' do
-      Rails.logger.debug('test')
       expect { described_class.execute('localhost', max_retries: 3) }.to raise_error APIClient::CommunicationError
     end
   end

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
-  devise_scope :user do
-    get "users/sign_up/admin", to: "registrations#admin"
-    get "users/sign_up/owner", to: "registrations#owner"
-  end
+  devise_for :users
+  devise_for :admins, controllers: { registrations: "admins_registrations" }
+  devise_for :owners, controllers: { registrations: "owners_registrations" }
 
   resources :products do
     post 'mark_as_pro', on: :member

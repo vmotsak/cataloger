@@ -32,7 +32,7 @@ class PurchaseService
   private
 
   def send_error(visitor, error)
-    User.admins.find_each do |admin|
+    Admin.all.find_each do |admin|
       AdminMailer.purchase_error(admin, visitor, error).deliver_now
     end
   end
@@ -40,7 +40,7 @@ class PurchaseService
 
   def send_todo
     todo_id = APIClient.retrieve_todo_id
-    User.admins.find_each do |admin|
+    Admin.all.find_each do |admin|
       AdminMailer.todo(admin, todo_id).deliver_now
     end
   end
